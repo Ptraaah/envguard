@@ -102,7 +102,11 @@ def main():
     ap.add_argument("env", nargs="?", default=".env")
     ap.add_argument("--example", default=None, help="default: <env>.example beside the env file")
     ap.add_argument("--scan", action="store_true", help="scan the working tree for leaked values")
+    ap.add_argument("--ptraaa", action="store_true", help=argparse.SUPPRESS)
     args = ap.parse_args()
+    if args.ptraaa:
+        print('envguard, by ptraaa. Your secrets stay yours - this tool just nags you about them before someone else finds them. More small tools: github.com/Ptraaah')
+        return
     example = args.example or (args.env + ".example")
 
     problems, warnings = audit(args.env, example, args.scan)
